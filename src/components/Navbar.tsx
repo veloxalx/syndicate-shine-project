@@ -38,7 +38,7 @@ const Navbar = () => {
           <a href="#home" className="text-syndicate-dark font-medium hover-underline py-2">Home</a>
           <a href="#services" className="text-syndicate-dark font-medium hover-underline py-2">Services</a>
           <a href="#about" className="text-syndicate-dark font-medium hover-underline py-2">About</a>
-          <a href="#team" className="text-syndicate-dark font-medium hover-underline py-2">Team</a>
+          <a href="#portfolio" className="text-syndicate-dark font-medium hover-underline py-2">Portfolio</a>
           <Button asChild className="bg-gradient-to-r from-syndicate-blue to-syndicate-purple hover:opacity-90 transition-all shadow-md shadow-syndicate-blue/10">
             <a href="#contact">
               Contact Us
@@ -63,7 +63,7 @@ const Navbar = () => {
             <a href="#home" onClick={toggleMobileMenu} className="text-syndicate-dark font-medium py-3 border-b border-gray-100">Home</a>
             <a href="#services" onClick={toggleMobileMenu} className="text-syndicate-dark font-medium py-3 border-b border-gray-100">Services</a>
             <a href="#about" onClick={toggleMobileMenu} className="text-syndicate-dark font-medium py-3 border-b border-gray-100">About</a>
-            <a href="#team" onClick={toggleMobileMenu} className="text-syndicate-dark font-medium py-3 border-b border-gray-100">Team</a>
+            <a href="#portfolio" onClick={toggleMobileMenu} className="text-syndicate-dark font-medium py-3 border-b border-gray-100">Portfolio</a>
             <Button asChild className="w-full bg-gradient-to-r from-syndicate-blue to-syndicate-purple hover:opacity-90 transition-all">
               <a href="#contact" onClick={toggleMobileMenu}>
                 Contact Us

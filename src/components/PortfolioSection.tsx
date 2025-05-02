@@ -68,7 +68,7 @@ const portfolioItems = [
       "Cloudinary",
       "Whatsapp API",
     ],
-    category: "Marketing",
+    category: "Web Development",
     fullDescription:
       "LankanArt is a vibrant online marketplace for Sri Lankan artists to showcase and sell their artwork. The platform features a user-friendly interface that allows artists to create profiles, upload their art, and manage their sales.",
   },
@@ -86,7 +86,7 @@ const portfolioItems = [
       "Cloudinary",
       "Whatsapp API",
     ],
-    category: "AI",
+    category: "Web Development",
     fullDescription:
       "LankaSupply is a comprehensive e-commerce platform specializing in helping early-stage startups and small businesses find the right suppliers and manufacturers for their products.",
   },
@@ -122,7 +122,7 @@ const portfolioItems = [
       "Sisira Auto Parts is a comprehensive e-commerce platform specializing in automotive parts and accessories.",
     image: "/sisira/sisira.png",
     tech: ["Next.js", "Firebase", "Cloudinary", "Tailwind"],
-    category: "Mobile Development",
+    category: "Web Development",
     fullDescription:
       "Sisira Auto Parts is a comprehensive e-commerce platform specializing in automotive parts and accessories. The site features a user-friendly interface, allowing customers to easily browse and purchase a wide range of products.",
   },

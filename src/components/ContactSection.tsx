@@ -1,10 +1,9 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { MapPin, Mail, Phone } from 'lucide-react';
+import { MapPin, Mail, Phone, Send, MessageSquare } from 'lucide-react';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -16,18 +15,45 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Real API call to submit the form
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+      
+      // Send notification email to admin
+      await fetch('/api/notify-admin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          subject: `New Contact Submission: ${formData.subject}`,
+          clientName: formData.name,
+          clientEmail: formData.email,
+          message: formData.message,
+        }),
+      });
       
       toast({
         title: "Message Sent!",
@@ -41,9 +67,10 @@ const ContactSection = () => {
         message: ''
       });
     } catch (error) {
+      console.error('Form submission error:', error);
       toast({
         title: "Something went wrong",
-        description: "Please try again later.",
+        description: "Please try again later or contact us directly.",
         variant: "destructive",
       });
     } finally {
@@ -51,11 +78,22 @@ const ContactSection = () => {
     }
   };
 
+  const handleWhatsAppClick = () => {
+    // Format the initial message
+    const message = encodeURIComponent("Hello, I'm interested in discussing a project with Syndicate Solutions.");
+    
+    // Open WhatsApp with the predefined message
+    window.open(`https://wa.me/94741143323?text=${message}`, '_blank');
+  };
+
   return (
-    <section id="contact" className="section bg-white">
+    <section id="contact" className="section bg-white py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+          <span className="px-3 py-1 text-sm font-medium bg-gradient-to-r from-syndicate-blue/10 to-syndicate-purple/10 rounded-full border border-syndicate-blue/20 inline-block mb-4">
+            Contact Us
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">Get In Touch</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-syndicate-blue to-syndicate-purple mx-auto mb-6"></div>
           <p className="text-lg text-syndicate-gray">
             Have a question or want to work together? Reach out to us!
@@ -64,19 +102,11 @@ const ContactSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
-            <div className="bg-gray-50 p-8 rounded-lg h-full">
+            <div className="bg-gray-50 p-8 rounded-lg h-full shadow-sm">
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               
               <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="mr-4 p-3 bg-blue-50 rounded-lg text-syndicate-blue">
-                    <MapPin className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Address</h4>
-                    <p className="text-syndicate-gray">123 Business Avenue<br />Suite 200<br />Tech City, ST 12345</p>
-                  </div>
-                </div>
+              
                 
                 <div className="flex items-start">
                   <div className="mr-4 p-3 bg-blue-50 rounded-lg text-syndicate-blue">
@@ -84,8 +114,8 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Email</h4>
-                    <p className="text-syndicate-gray">info@syndicatesolutions.com</p>
-                    <p className="text-syndicate-gray">support@syndicatesolutions.com</p>
+                    <p className="text-syndicate-gray">syndicatesoftwaresolutions@gmail.com</p>
+
                   </div>
                 </div>
                 
@@ -95,9 +125,19 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Phone</h4>
-                    <p className="text-syndicate-gray">(555) 123-4567</p>
-                    <p className="text-syndicate-gray">(555) 765-4321</p>
+                    <p className="text-syndicate-gray">074 114 3323</p>
                   </div>
+                </div>
+
+                <div className="mt-8">
+                  <Button 
+                    onClick={handleWhatsAppClick}
+                    className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:opacity-90 transition-opacity text-white flex items-center justify-center gap-2 py-6"
+                  >
+                    <MessageSquare className="h-5 w-5" />
+                    Chat on WhatsApp
+                  </Button>
+                  <p className="text-xs text-center mt-2 text-syndicate-gray">Quick response during business hours</p>
                 </div>
               </div>
             </div>
@@ -111,7 +151,7 @@ const ContactSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-syndicate-gray mb-1">
-                      Full Name
+                      Full Name <span className="text-red-500">*</span>
                     </label>
                     <Input
                       id="name"
@@ -125,7 +165,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-syndicate-gray mb-1">
-                      Email Address
+                      Email Address <span className="text-red-500">*</span>
                     </label>
                     <Input
                       id="email"
@@ -142,7 +182,7 @@ const ContactSection = () => {
                 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-syndicate-gray mb-1">
-                    Subject
+                    Subject <span className="text-red-500">*</span>
                   </label>
                   <Input
                     id="subject"
@@ -157,7 +197,7 @@ const ContactSection = () => {
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-syndicate-gray mb-1">
-                    Message
+                    Message <span className="text-red-500">*</span>
                   </label>
                   <Textarea
                     id="message"
@@ -174,9 +214,19 @@ const ContactSection = () => {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-syndicate-blue to-syndicate-purple hover:opacity-90 transition-opacity"
+                  className="w-full bg-gradient-to-r from-syndicate-blue to-syndicate-purple hover:opacity-90 transition-opacity h-12 flex items-center justify-center gap-2"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? (
+                    <>
+                      <span className="inline-block h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </Button>
               </form>
             </div>

@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
           
           {/* Services */}
-          <div className="md:col-span-1">
+          {/* <div className="md:col-span-1">
             <h3 className="text-lg font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Software Development</a></li>
@@ -57,10 +57,10 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Digital Transformation</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">AI Solutions</a></li>
             </ul>
-          </div>
+          </div> */}
           
           {/* Contact */}
-          <div className="md:col-span-1">
+          {/* <div className="md:col-span-1">
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2">
               <li className="text-gray-300">123 Business Avenue</li>
@@ -68,7 +68,7 @@ const Footer = () => {
               <li className="text-gray-300">info@syndicatesolutions.com</li>
               <li className="text-gray-300">(555) 123-4567</li>
             </ul>
-          </div>
+          </div> */}
         </div>
         
         <div className="border-t border-gray-700 mt-10 pt-6">

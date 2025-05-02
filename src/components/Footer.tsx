@@ -16,7 +16,7 @@ const Footer = () => {
             <p className="text-gray-300 mb-4">
               Innovative digital solutions for forward-thinking businesses.
             </p>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-syndicate-blue transition-colors">
                 <Facebook size={20} />
               </a>
@@ -32,7 +32,7 @@ const Footer = () => {
               <a href="#" className="text-gray-300 hover:text-syndicate-blue transition-colors">
                 <Github size={20} />
               </a>
-            </div>
+            </div> */}
           </div>
           
           {/* Quick Links */}

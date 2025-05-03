@@ -1,6 +1,6 @@
-
 import { ArrowRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import React from 'react';
 
 const HeroSection = () => {
   return (
@@ -14,6 +14,11 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 animate-fade-in-up">
+            <div className="flex items-center mb-6">
+              <Logo className="h-12 w-auto mr-4" />
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">Syndicate</span>
+            </div>
+            
             <span className="px-3 py-1 text-sm font-medium bg-gradient-to-r from-syndicate-blue/10 to-syndicate-purple/10 rounded-full border border-syndicate-blue/20 inline-block mb-4">
               Innovative Digital Solutions
             </span>
@@ -46,7 +51,7 @@ const HeroSection = () => {
                 <div className="absolute bottom-10 right-20 w-60 h-60 rounded-full bg-syndicate-purple/20 blur-2xl"></div>
               </div>
               
-              <div className="relative z-10 rounded-2xl glass-card w-full h-full p-6">
+              <div className="relative z-10 rounded-2xl glass-card w-full h-full p-6 shadow-xl border border-white/20 backdrop-blur-sm">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-syndicate-blue to-syndicate-purple"></div>
                 
                 <div className="flex flex-col h-full">
@@ -56,21 +61,19 @@ const HeroSection = () => {
                       <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                       <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                     </div>
-                    <div className="w-1/3 h-6 bg-gray-100 rounded"></div>
+                    <div className="w-1/3 h-6 bg-gray-100/80 rounded"></div>
                   </div>
                   
                   <div className="flex-1 flex flex-col">
                     <div className="grid grid-cols-12 gap-4 mb-6">
                       <div className="col-span-8 space-y-4">
                         <div className="h-32 bg-gradient-to-r from-syndicate-blue/10 to-syndicate-purple/10 rounded-lg flex items-center justify-center">
-                          <div className="w-20 h-20 bg-gradient-to-r from-syndicate-blue to-syndicate-purple rounded-full flex items-center justify-center">
-                            <div className="w-16 h-16 bg-white rounded-full"></div>
-                          </div>
+                          <Logo className="w-20 h-20 text-syndicate-blue" />
                         </div>
-                        <div className="h-10 bg-gray-100 rounded w-3/4"></div>
-                        <div className="h-8 bg-gray-100 rounded w-1/2"></div>
+                        <div className="h-10 bg-gray-100/80 rounded w-3/4"></div>
+                        <div className="h-8 bg-gray-100/80 rounded w-1/2"></div>
                       </div>
-                      <div className="col-span-4 bg-gray-50 rounded p-3">
+                      <div className="col-span-4 bg-gray-50/90 rounded-lg p-3">
                         <div className="h-4 bg-gray-200 rounded mb-2 w-full"></div>
                         <div className="h-4 bg-gray-200 rounded mb-2 w-3/4"></div>
                         <div className="h-4 bg-gray-200 rounded mb-2 w-5/6"></div>
@@ -79,9 +82,21 @@ const HeroSection = () => {
                     </div>
                     
                     <div className="grid grid-cols-3 gap-4">
-                      <div className="h-20 rounded bg-gradient-to-br from-syndicate-blue/20 to-syndicate-purple/5"></div>
-                      <div className="h-20 rounded bg-gradient-to-br from-syndicate-purple/20 to-syndicate-blue/5"></div>
-                      <div className="h-20 rounded bg-gradient-to-br from-syndicate-blue/15 to-syndicate-purple/10"></div>
+                      <div className="h-20 rounded-lg bg-gradient-to-br from-syndicate-blue/20 to-syndicate-purple/5 flex items-center justify-center">
+                        <div className="w-8 h-8 bg-syndicate-blue/30 rounded-md flex items-center justify-center">
+                          <div className="w-4 h-4 bg-syndicate-blue/60 rounded-sm"></div>
+                        </div>
+                      </div>
+                      <div className="h-20 rounded-lg bg-gradient-to-br from-syndicate-purple/20 to-syndicate-blue/5 flex items-center justify-center">
+                        <div className="w-8 h-8 bg-syndicate-purple/30 rounded-md flex items-center justify-center">
+                          <div className="w-4 h-4 bg-syndicate-purple/60 rounded-sm"></div>
+                        </div>
+                      </div>
+                      <div className="h-20 rounded-lg bg-gradient-to-br from-syndicate-blue/15 to-syndicate-purple/10 flex items-center justify-center">
+                        <div className="w-8 h-8 bg-syndicate-blue/20 rounded-md flex items-center justify-center">
+                          <div className="w-4 h-4 bg-blue-400/60 rounded-sm"></div>
+                        </div>
+                      </div>
                     </div>
                     
                     <div className="mt-auto pt-6 flex items-center justify-between">
@@ -104,8 +119,81 @@ const HeroSection = () => {
             <div className="w-1 h-2 bg-syndicate-gray/50 rounded-full"></div>
           </div>
         </div>
+        
+        {/* Stats banner */}
+        <div className="hidden md:grid grid-cols-3 gap-8 mt-16 px-6 py-8 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg">
+          <div className="text-center">
+            <h3 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">10+</h3>
+            <p className="text-syndicate-gray">Years of Excellence</p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">250+</h3>
+            <p className="text-syndicate-gray">Projects Completed</p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">95%</h3>
+            <p className="text-syndicate-gray">Client Satisfaction</p>
+          </div>
+        </div>
       </div>
     </section>
+  );
+};
+
+// Custom Logo Component
+const Logo = ({ className }) => {
+  return (
+    <svg 
+      viewBox="0 0 200 200" 
+      className={className} 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#4F46E5" /> {/* syndicate-blue */}
+          <stop offset="100%" stopColor="#8B5CF6" /> {/* syndicate-purple */}
+        </linearGradient>
+      </defs>
+      
+      {/* Base hexagon shape */}
+      <path 
+        d="M100,20 L170,60 L170,140 L100,180 L30,140 L30,60 Z" 
+        fill="url(#logoGradient)"
+        opacity="0.9"
+      />
+      
+      {/* Inner shape */}
+      <path 
+        d="M100,40 L150,70 L150,130 L100,160 L50,130 L50,70 Z" 
+        fill="#ffffff"
+        opacity="0.3"
+      />
+      
+      {/* Center connection lines */}
+      <path 
+        d="M100,40 L100,160 M50,70 L150,130 M50,130 L150,70" 
+        stroke="white"
+        strokeWidth="3"
+        opacity="0.6"
+      />
+      
+      {/* Center dot */}
+      <circle 
+        cx="100" 
+        cy="100" 
+        r="15" 
+        fill="white"
+        opacity="0.9"
+      />
+      
+      {/* Connection dots */}
+      <circle cx="100" cy="40" r="5" fill="white" opacity="0.8" />
+      <circle cx="100" cy="160" r="5" fill="white" opacity="0.8" />
+      <circle cx="50" cy="70" r="5" fill="white" opacity="0.8" />
+      <circle cx="150" cy="70" r="5" fill="white" opacity="0.8" />
+      <circle cx="50" cy="130" r="5" fill="white" opacity="0.8" />
+      <circle cx="150" cy="130" r="5" fill="white" opacity="0.8" />
+    </svg>
   );
 };
 

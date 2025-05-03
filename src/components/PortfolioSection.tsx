@@ -14,6 +14,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import ProjectGrid from "./ProjectGrid";
 
 const portfolioItems = [
   {
@@ -61,13 +62,7 @@ const portfolioItems = [
     description:
       "A vibrant online marketplace for Sri Lankan artists to showcase and sell their artwork.",
     image: "/art/art.png",
-    tech: [
-      "Next.js",
-      "Firebase",
-      "Tailwind",
-      "Cloudinary",
-      "Whatsapp API",
-    ],
+    tech: ["Next.js", "Firebase", "Tailwind", "Cloudinary", "Whatsapp API"],
     category: "Web Development",
     fullDescription:
       "LankanArt is a vibrant online marketplace for Sri Lankan artists to showcase and sell their artwork. The platform features a user-friendly interface that allows artists to create profiles, upload their art, and manage their sales.",
@@ -79,13 +74,7 @@ const portfolioItems = [
     description:
       "LankaSupply is a comprehensive e-commerce platform specializing in helping early-stage startups and small businesses find the right suppliers.",
     image: "/supply/supply.jpeg",
-    tech: [
-      "Next.js",
-      "Firebase",
-      "Tailwind",
-      "Cloudinary",
-      "Whatsapp API",
-    ],
+    tech: ["Next.js", "Firebase", "Tailwind", "Cloudinary", "Whatsapp API"],
     category: "Web Development",
     fullDescription:
       "LankaSupply is a comprehensive e-commerce platform specializing in helping early-stage startups and small businesses find the right suppliers and manufacturers for their products.",
@@ -199,101 +188,10 @@ const PortfolioSection = () => {
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {visibleItems.map((item, index) => (
-            <div
-              key={item.id}
-              className="animate-on-scroll fade-in"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <HoverCard>
-                <HoverCardTrigger asChild>
-                  <Card className="overflow-hidden hover-lift group h-full bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-500">
-                    <div className="relative overflow-hidden">
-                      <div className="aspect-[16/9] overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-syndicate-blue/30 to-syndicate-purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-syndicate-dark z-20 shadow-sm">
-                        {item.category}
-                      </div>
-                    </div>
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-xl group-hover:text-syndicate-blue transition-colors">
-                        {item.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="pb-4">
-                      <CardDescription className="text-syndicate-gray">
-                        {item.description}
-                      </CardDescription>
-                    </CardContent>
-                    <CardFooter className="pt-0 justify-between items-center">
-                      <div className="flex gap-1.5 flex-wrap">
-                        {item.tech.slice(0, 2).map((tech, i) => (
-                          <span
-                            key={i}
-                            className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {item.tech.length > 2 && (
-                          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
-                            +{item.tech.length - 2}
-                          </span>
-                        )}
-                      </div>
-                      <a
-                        href={item.link}
-                        className="flex items-center text-syndicate-blue font-medium text-sm group/link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`View ${item.title} project`}
-                      >
-                        View Project
-                        <ArrowRight
-                          size={16}
-                          className="ml-1 transition-transform group-hover/link:translate-x-1"
-                        />
-                      </a>
-                    </CardFooter>
-                  </Card>
-                </HoverCardTrigger>
-                <HoverCardContent className="w-80 p-0 shadow-xl rounded-xl border-0">
-                  <div className="p-4">
-                    <h4 className="font-semibold mb-2">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground mb-3">
-                      {item.fullDescription}
-                    </p>
-                    <div className="flex gap-1.5 flex-wrap mb-3">
-                      {item.tech.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <a
-                      href={item.link}
-                      className="flex items-center text-xs text-syndicate-blue font-medium"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Visit Project <ExternalLink size={12} className="ml-1" />
-                    </a>
-                  </div>
-                </HoverCardContent>
-              </HoverCard>
-            </div>
-          ))}
-        </div>
+        <ProjectGrid
+          projects={portfolioItems}
+          category={activeCategory.toLowerCase()}
+        />
 
         {/* CTA Button */}
         <div className="text-center animate-on-scroll">

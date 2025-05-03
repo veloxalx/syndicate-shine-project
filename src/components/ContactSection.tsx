@@ -27,6 +27,7 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const categories = [
+    "Web Development",
     "Tech & Development",
     "Design & Branding",
     "Marketing & SEO",

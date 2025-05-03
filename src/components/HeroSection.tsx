@@ -123,11 +123,11 @@ const HeroSection = () => {
         {/* Stats banner */}
         <div className="hidden md:grid grid-cols-3 gap-8 mt-16 px-6 py-8 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg">
           <div className="text-center">
-            <h3 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">10+</h3>
+            <h3 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">2</h3>
             <p className="text-syndicate-gray">Years of Excellence</p>
           </div>
           <div className="text-center">
-            <h3 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">250+</h3>
+            <h3 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">5</h3>
             <p className="text-syndicate-gray">Projects Completed</p>
           </div>
           <div className="text-center">

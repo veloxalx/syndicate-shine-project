@@ -3,6 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue 
+} from "@/components/ui/select";
 import { MapPin, Mail, Phone, Send, MessageSquare, Info } from "lucide-react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase"; // Adjust import path based on your project structure
@@ -14,13 +21,31 @@ const ContactSection = () => {
     email: "",
     phone: "",
     subject: "",
+    category: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const categories = [
+    "Tech & Development",
+    "Design & Branding",
+    "Marketing & SEO",
+    "Business Consulting",
+    "Support & Training",
+    "Real Estate",
+    "Car Sales",
+    "E-commerce",
+    "Other"
+  ];
+  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleCategoryChange = (value) => {
+    setFormData((prev) => ({ ...prev, category: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -33,9 +58,10 @@ const ContactSection = () => {
         !formData.name ||
         !formData.subject ||
         !formData.message ||
+        !formData.category ||
         (!formData.email && !formData.phone)
       ) {
-        throw new Error("Please provide your name, subject, message, and either email or phone number");
+        throw new Error("Please provide your name, subject, category, message, and either email or phone number");
       }
 
       // Store contact submission in Firestore
@@ -50,6 +76,7 @@ const ContactSection = () => {
         clientName: formData.name,
         clientEmail: formData.email,
         clientPhone: formData.phone,
+        category: formData.category,
         message: formData.message,
         timestamp: serverTimestamp(),
         read: false,
@@ -66,6 +93,7 @@ const ContactSection = () => {
         email: "",
         phone: "",
         subject: "",
+        category: "",
         message: "",
       });
     } catch (error) {
@@ -216,6 +244,31 @@ const ContactSection = () => {
                   <p className="text-syndicate-gray">
                     Please provide either your email address or phone number so we can contact you.
                   </p>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="category"
+                    className="block text-sm font-medium text-syndicate-gray mb-1"
+                  >
+                    Service Category <span className="text-red-500">*</span>
+                  </label>
+                  <Select 
+                    value={formData.category} 
+                    onValueChange={handleCategoryChange}
+                    required
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select a service category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {categories.map(category => (
+                        <SelectItem key={category} value={category}>
+                          {category}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div>

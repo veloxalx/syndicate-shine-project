@@ -101,7 +101,7 @@ const AdminDashboard = () => {
                       {formatDate(contact.timestamp)}
                     </span>
                   </div>
-                  
+
                   {(contact.email || contact.phone) && (
                     <div className="space-y-1 mb-2">
                       {contact.email && (
@@ -138,35 +138,35 @@ const AdminDashboard = () => {
                 </span>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6 mb-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6 mb-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-500 mb-1">
-                      Name
-                    </label>
-                    <p className="font-medium">{selectedContact.name}</p>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-500 mb-1">
-                      Contact Information
-                    </label>
-                    {selectedContact.email && (
-                      <div className="flex items-center font-medium mb-1">
-                        <Mail className="h-4 w-4 mr-2 text-syndicate-blue" />
-                        <span>{selectedContact.email}</span>
-                      </div>
-                    )}
-                    {selectedContact.phone && (
-                      <div className="flex items-center font-medium">
-                        <Phone className="h-4 w-4 mr-2 text-syndicate-blue" />
-                        <span>{selectedContact.phone}</span>
-                      </div>
-                    )}
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6 mb-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-500 mb-1">
+                    Name
+                  </label>
+                  <p className="font-medium">{selectedContact.name}</p>
                 </div>
 
-                <div className="mb-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-500 mb-1">
+                    Contact Information
+                  </label>
+                  {selectedContact.email && (
+                    <div className="flex items-center font-medium mb-1">
+                      <Mail className="h-4 w-4 mr-2 text-syndicate-blue" />
+                      <span>{selectedContact.email}</span>
+                    </div>
+                  )}
+                  {selectedContact.phone && (
+                    <div className="flex items-center font-medium">
+                      <Phone className="h-4 w-4 mr-2 text-syndicate-blue" />
+                      <span>{selectedContact.phone}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6 mb-6">
+                <div>
                   <label className="block text-sm font-medium text-gray-500 mb-1">
                     Subject
                   </label>
@@ -175,39 +175,21 @@ const AdminDashboard = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-500 mb-1">
-                    Message
+                    Service Category
                   </label>
-                  <div className="bg-white border border-gray-200 rounded-lg p-4 whitespace-pre-wrap">
-                    {selectedContact.message}
-                  </div>
+                  <p className="font-medium">
+                    {selectedContact.category || "Not specified"}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                {selectedContact.email && (
-                  <button
-                    className="px-4 py-2 bg-syndicate-blue text-white rounded-lg hover:bg-blue-700 transition"
-                    onClick={() => {
-                      window.location.href = `mailto:${selectedContact.email}?subject=RE: ${selectedContact.subject}`;
-                    }}
-                  >
-                    Reply via Email
-                  </button>
-                )}
-                {selectedContact.phone && (
-                  <a
-                    href={`tel:${selectedContact.phone}`}
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-                  >
-                    Call
-                  </a>
-                )}
-                <button
-                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
-                  onClick={() => setSelectedContact(null)}
-                >
-                  Close
-                </button>
+              <div>
+                <label className="block text-sm font-medium text-gray-500 mb-1">
+                  Message
+                </label>
+                <div className="bg-white border border-gray-200 rounded-lg p-4 whitespace-pre-wrap">
+                  {selectedContact.message}
+                </div>
               </div>
             </div>
           ) : (

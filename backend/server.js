@@ -1,21 +1,11 @@
-// server.js - Main Express application
+// server.js - Main Express application with Firebase
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
-const mongoose = require("mongoose");
 require("dotenv").config();
 
-// MongoDB Contact Schema
-const contactSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  subject: { type: String, required: true },
-  message: { type: String, required: true },
-  timestamp: { type: Date, default: Date.now },
-});
-
-const Contact = mongoose.model("Contact", contactSchema);
+// Firebase Admin SDK for backend operations
+const admin = require("firebase-admin");
 
 // Initialize Express app
 const app = express();
@@ -24,25 +14,24 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Connect to MongoDB
-mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/contact_db")
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
-
-// Configure email transporter
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || "gmail",
-  auth: {
-    user: process.env.EMAIL_USER || "your-email@gmail.com",
-    pass: process.env.EMAIL_PASSWORD || "your-app-password",
-  },
+// Initialize Firebase Admin with service account
+// You'll need to generate a service account key from Firebase console
+admin.initializeApp({
+  credential: admin.credential.cert({
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+  }),
+  databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`,
 });
+
+// Get Firestore database
+const db = admin.firestore();
 
 // API endpoint to handle contact form submissions
 app.post("/api/contact", async (req, res) => {
   try {
-    const { name, email, subject, message, timestamp } = req.body;
+    const { name, email, subject, message } = req.body;
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
@@ -51,16 +40,15 @@ app.post("/api/contact", async (req, res) => {
         .json({ success: false, message: "All fields are required" });
     }
 
-    // Create and save contact entry to database
-    const newContact = new Contact({
+    // Create contact entry in Firestore
+    const contactsRef = db.collection("contacts");
+    await contactsRef.add({
       name,
       email,
       subject,
       message,
-      timestamp,
+      timestamp: admin.firestore.FieldValue.serverTimestamp(),
     });
-
-    await newContact.save();
 
     res
       .status(200)
@@ -83,24 +71,22 @@ app.post("/api/notify-admin", async (req, res) => {
         .json({ success: false, message: "Missing required fields" });
     }
 
-    // Configure email options
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.ADMIN_EMAIL || "syndicatesoftwaresolutions@gmail.com",
+    // Using Firebase Cloud Functions (or you can also use Nodemailer here)
+    // This requires setting up Firebase Functions separately
+    // For demonstration purposes, we'll save the notification to a separate collection
+    const notificationsRef = db.collection("admin-notifications");
+    await notificationsRef.add({
       subject: subject || "New Contact Form Submission",
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${clientName}</p>
-        <p><strong>Email:</strong> ${clientEmail}</p>
-        <p><strong>Subject:</strong> ${subject || "N/A"}</p>
-        <h3>Message:</h3>
-        <p>${message}</p>
-        <p><em>Sent on: ${new Date().toLocaleString()}</em></p>
-      `,
-    };
+      clientName,
+      clientEmail,
+      message,
+      timestamp: admin.firestore.FieldValue.serverTimestamp(),
+      read: false,
+    });
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    // Option: Send email using Firebase Extensions or a third-party service
+    // Firebase has extensions like "Trigger Email" that can be set up to send emails
+    // based on Firestore document creation
 
     res.status(200).json({ success: true, message: "Admin notification sent" });
   } catch (error) {

@@ -90,7 +90,7 @@ const AboutSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">About Syndicate Solutions</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-syndicate-blue to-syndicate-purple mb-6"></div>
             <p className="text-lg text-syndicate-gray mb-6">
-              Founded in 2015, Syndicate Solutions has been at the forefront of digital innovation, 
+              Founded in 2024, Syndicate Solutions has been at the forefront of digital innovation, 
               helping businesses across various industries leverage technology to achieve their goals.
             </p>
             <p className="text-lg text-syndicate-gray mb-8">

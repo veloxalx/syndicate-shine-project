@@ -25,11 +25,11 @@ const AboutSection = () => {
     }
   ];
 
-  const achievements = [
-    { number: "15+", label: "Years Experience" },
-    { number: "200+", label: "Global Clients" },
-    { number: "50+", label: "Team Members" }
-  ];
+  // const achievements = [
+  //   { number: "15+", label: "Years Experience" },
+  //   { number: "200+", label: "Global Clients" },
+  //   { number: "50+", label: "Team Members" }
+  // ];
 
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
@@ -143,14 +143,14 @@ const AboutSection = () => {
 
               {/* Achievements bar - tablet and above */}
               <div className="hidden md:flex absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-[120%] bg-white shadow-xl rounded-xl overflow-hidden">
-                <div className="grid grid-cols-3 w-full">
+                {/* <div className="grid grid-cols-3 w-full">
                   {achievements.map((item, index) => (
                     <div key={index} className={`py-6 px-4 text-center ${index < achievements.length - 1 ? 'border-r border-gray-100' : ''}`}>
                       <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">{item.number}</h3>
                       <p className="text-sm text-syndicate-gray">{item.label}</p>
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ const AboutSection = () => {
           <div className="lg:col-span-7 order-1 lg:order-2 animate-on-scroll">
             <div className="lg:pl-8">
               <p className="text-lg text-syndicate-gray mb-6">
-                Founded in 2010, <span className="font-semibold text-gray-800">Syndicate Solutions</span> has been at the forefront of digital innovation, 
+                Founded in 2024, <span className="font-semibold text-gray-800">Syndicate Solutions</span> has been at the forefront of digital innovation, 
                 helping businesses across various industries leverage technology to achieve their strategic objectives and drive sustainable growth.
               </p>
               <p className="text-lg text-syndicate-gray mb-8">
@@ -189,25 +189,25 @@ const AboutSection = () => {
               </div>
               
               {/* CTA button */}
-              <div className="mt-12 inline-block">
+              {/* <div className="mt-12 inline-block">
                 <a href="#team" className="inline-flex items-center px-6 py-3 bg-white rounded-lg shadow-md border border-syndicate-blue/10 text-syndicate-blue hover:shadow-lg transition-all duration-300 font-medium">
                   <Users className="mr-2 h-5 w-5" />
                   Meet Our Team
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
         
         {/* Achievements bar - mobile only */}
-        <div className="grid grid-cols-3 gap-4 md:hidden mt-16">
+        {/* <div className="grid grid-cols-3 gap-4 md:hidden mt-16">
           {achievements.map((item, index) => (
             <div key={index} className="py-4 px-3 bg-white shadow-md rounded-lg text-center">
               <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-syndicate-blue to-syndicate-purple">{item.number}</h3>
               <p className="text-xs text-syndicate-gray">{item.label}</p>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

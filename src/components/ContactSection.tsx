@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue 
+  SelectValue,
 } from "@/components/ui/select";
 import { MapPin, Mail, Phone, Send, MessageSquare, Info } from "lucide-react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
@@ -36,9 +36,8 @@ const ContactSection = () => {
     "Real Estate",
     "Car Sales",
     "E-commerce",
-    "Other"
+    "Other",
   ];
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,7 +61,9 @@ const ContactSection = () => {
         !formData.category ||
         (!formData.email && !formData.phone)
       ) {
-        throw new Error("Please provide your name, subject, category, message, and either email or phone number");
+        throw new Error(
+          "Please provide your name, subject, category, message, and either email or phone number"
+        );
       }
 
       // Store contact submission in Firestore
@@ -117,7 +118,7 @@ const ContactSection = () => {
     );
 
     // Open WhatsApp with the predefined message
-    window.open(`https://wa.me/94741143323?text=${message}`, "_blank");
+    window.open(`https://wa.me/94721516226?text=${message}`, "_blank");
   };
 
   return (
@@ -160,7 +161,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Phone</h4>
-                    <p className="text-syndicate-gray">074 114 3323</p>
+                    <p className="text-syndicate-gray">072 151 6226</p>
                   </div>
                 </div>
 
@@ -243,7 +244,8 @@ const ContactSection = () => {
                 <div className="bg-blue-50 p-3 rounded-md flex items-start gap-3 text-sm">
                   <Info className="h-5 w-5 text-syndicate-blue flex-shrink-0 mt-0.5" />
                   <p className="text-syndicate-gray">
-                    Please provide either your email address or phone number so we can contact you.
+                    Please provide either your email address or phone number so
+                    we can contact you.
                   </p>
                 </div>
 
@@ -254,8 +256,8 @@ const ContactSection = () => {
                   >
                     Service Category <span className="text-red-500">*</span>
                   </label>
-                  <Select 
-                    value={formData.category} 
+                  <Select
+                    value={formData.category}
                     onValueChange={handleCategoryChange}
                     required
                   >
@@ -263,7 +265,7 @@ const ContactSection = () => {
                       <SelectValue placeholder="Select a service category" />
                     </SelectTrigger>
                     <SelectContent>
-                      {categories.map(category => (
+                      {categories.map((category) => (
                         <SelectItem key={category} value={category}>
                           {category}
                         </SelectItem>

@@ -24,7 +24,7 @@ const portfolioItems = [
     githubUrl: "https://github.com/yourusername/speedlabs",
     description:
       "Innovative platform showcasing cutting-edge technological solutions with advanced performance optimization and user-centric design.",
-    image: "/speedlabs/speedlabs.jpeg",
+    image: "https://res.cloudinary.com/dcbitedmr/image/upload/v1746343110/speedlabs_kbkcnu.jpg",
     tech: ["Next.js", "Resend", "Firebase", "Tailwind"],
     category: "Web Development",
     fullDescription:
@@ -37,7 +37,7 @@ const portfolioItems = [
     githubUrl: "https://github.com/yourusername/sparkshift",
     description:
       "Sleek and professional website for SparkShift, a Social Media Marketing Agency (SMMA).",
-    image: "/spark/spark.jpg",
+    image: "https://res.cloudinary.com/dcbitedmr/image/upload/v1746343106/spark_u8z8lp.jpg",
     tech: ["Next.js", "Resend", "Firebase", "Tailwind"],
     category: "Web Development",
     fullDescription:
@@ -49,7 +49,7 @@ const portfolioItems = [
     link: "https://lankamodslk.vercel.app/",
     description:
       "Premium marketplace for automotive modification parts with a seamless shopping experience.",
-    image: "/lankamod/lankamod-hero.jpg",
+    image: "https://res.cloudinary.com/dcbitedmr/image/upload/v1746343099/lankamod-hero_dyhfk4.png",
     tech: ["Next.js", "Firebase", "Tailwind", "WhatsApp API"],
     category: "Web Development",
     fullDescription:
@@ -61,7 +61,7 @@ const portfolioItems = [
     link: "https://lankaart.vercel.app",
     description:
       "A vibrant online marketplace for Sri Lankan artists to showcase and sell their artwork.",
-    image: "/art/art.png",
+    image: "https://res.cloudinary.com/dcbitedmr/image/upload/v1746343085/art_xf7zas.png",
     tech: ["Next.js", "Firebase", "Tailwind", "Cloudinary", "Whatsapp API"],
     category: "Web Development",
     fullDescription:
@@ -73,7 +73,7 @@ const portfolioItems = [
     link: "https://lankasupply.vercel.app",
     description:
       "LankaSupply is a comprehensive e-commerce platform specializing in helping early-stage startups and small businesses find the right suppliers.",
-    image: "/supply/supply.jpeg",
+    image: "https://res.cloudinary.com/dcbitedmr/image/upload/v1746343113/supply_lpnabd.jpg",
     tech: ["Next.js", "Firebase", "Tailwind", "Cloudinary", "Whatsapp API"],
     category: "Web Development",
     fullDescription:
@@ -84,7 +84,7 @@ const portfolioItems = [
     title: "Syndicate Solutions",
     link: "https://syndicatesolutions.vercel.app/",
     description: "Innovative Digital Services Provider",
-    image: "/syndicate/synd.png",
+    image: "https://res.cloudinary.com/dcbitedmr/image/upload/v1746343124/synd_x7ssr5.jpg",
     tech: ["Next.js", "Firebase", "Tailwind", "WhatsApp API"],
     category: "Web Development",
     fullDescription:
@@ -97,7 +97,7 @@ const portfolioItems = [
     githubUrl: "https://github.com/yourusername/kqmestate",
     description:
       "Elegant real estate website with seamless user experience and advanced property search capabilities.",
-    image: "/kqm/kqm.jpg",
+    image: "https://res.cloudinary.com/dcbitedmr/image/upload/v1746343093/kqm_wgu6kv.jpg",
     tech: ["Next.js", "Resend", "Firebase", "Tailwind"],
     category: "Web Development",
     fullDescription:
@@ -109,7 +109,7 @@ const portfolioItems = [
     link: "https://sisiraautoparts.vercel.app",
     description:
       "Sisira Auto Parts is a comprehensive e-commerce platform specializing in automotive parts and accessories.",
-    image: "/sisira/sisira.png",
+    image: "https://res.cloudinary.com/dcbitedmr/image/upload/v1746343102/sisira_m09s2u.png",
     tech: ["Next.js", "Firebase", "Cloudinary", "Tailwind"],
     category: "Web Development",
     fullDescription:
